@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/sossmc/nebula-schema/master/schema#",
-  "$id": "https://raw.githubusercontent.com/Nebula-Vis/nebula-schema/master/schema",
+  "$id": "https://raw.githubusercontent.com/Nebula-Vis/nebula-schema/master/schema#",
   "type": "object",
   "definitions" : {
   },
