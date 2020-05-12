@@ -2,7 +2,8 @@
 
 > json schema for nebula-vis
 
-reference with
+
+#### Reference with
 
 ```json
 {
