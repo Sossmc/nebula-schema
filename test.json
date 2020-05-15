@@ -1,0 +1,35 @@
+{
+  "$schema": "./nebula-schema.json",
+  "data": [
+    {
+      "name": "ker",
+      "path": "/data.json"
+    }
+  ],
+  "layout": {
+    "width": "1600px",
+    "height": "900px",
+    "columns": ["1fr"],
+    "rows": ["1fr"]
+  },
+  "visualizations": [
+    {
+      "id": "dsaf",
+      "visualization": "piechart",
+      "container": "1 1 1 1",
+      "props": {
+        "data": "fadsf"
+      }
+    },
+    {
+      "id": "dsaf",
+      "visualization": "map",
+      "container": "1 2 1 1",
+      "props": {
+        "data": "fadsf",
+        "mapStyle": {},
+        "circleColor": "rgba(1,2,3,0.2)"
+      }
+    }
+  ]
+}

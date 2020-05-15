@@ -1,0 +1,33 @@
+{
+  "title": "Props of map",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "x": { "type": "string", "description": "the primary key of the data" },
+    "y": { "type": "string", "description": "the value key of the data" },
+    "brushType": {
+      "type": "string",
+      "description": "The type of brush, select x, select y or select area."
+    },
+    "bottomEdge": { "type": "string" },
+    "circleColor": { "$ref": "../utils.json#/Color" },
+    "mapStyle": {
+      "type": "object",
+      "properties": {
+        "mapLayerStyle": { "type": "string" },
+        "annotionLayerStyle": { "type": "string" },
+        "minZoom": { "type": "string" },
+        "maxZoom": { "type": "number" },
+        "centerPoint": {
+          "type": "array",
+          "items": [{ "type": "number" }, { "type": "number" }]
+        },
+        "zoom": { "type": "number" },
+        "zoomControl": { "type": "boolean" },
+        "attributionControl": { "type": "boolean" }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data", "mapStyle"]
+}

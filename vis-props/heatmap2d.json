@@ -1,0 +1,19 @@
+{
+  "title": "Props of heatmap2d",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "x": { "type": "string", "description": "the primary key of the data" },
+    "y": { "type": "string", "description": "the value key of the data" },
+    "scale": {
+      "type": "number",
+      "description": "the value ranges of the x attribute"
+    },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data", "x"]
+}

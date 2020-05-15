@@ -1,0 +1,17 @@
+{
+  "title": "Props of parallel coordinates",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "color": {
+      "$ref": "../utils.json#/Color",
+      "description": "the stoke color"
+    },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data"]
+}

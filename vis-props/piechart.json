@@ -1,0 +1,41 @@
+{
+  "title": "Props of piechart",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "range": { "type": "string", "description": "the primary key of the data" },
+    "value": { "type": "string", "description": "the value key of the data" },
+    "aggregate": { "$ref": "../utils.json#/Aggregation" },
+    "count": {
+      "type": "number",
+      "multipleOf": 1,
+      "default": null
+    },
+    "colors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": null
+    },
+    "innerRadius": {
+      "type": "number",
+      "maximum": 1,
+      "minimum": 0,
+      "default": 0
+    },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    }
+  },
+  "required": [
+    "data",
+    "range",
+    "value",
+    "aggregate",
+    "count",
+    "colors",
+    "innerRadius",
+    "selection"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Props of lineup",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    },
+    "order": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "filteredData": {
+      "$ref": "../utils.json#/Table",
+      "description": "the filtered data items"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data"]
+}

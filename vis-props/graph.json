@@ -1,0 +1,13 @@
+{
+  "title": "Props of graph",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string", "description": "data ref with nodes/links" },
+    "selection": {
+      "$ref": "../utils.json#/Graph",
+      "description": "the selected nodes"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data"]
+}

@@ -1,0 +1,434 @@
+{
+  "title": "Nebula Specification",
+  "type": "object",
+  "required": ["data", "visualizations", "layout"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Data"
+      }
+    },
+    "layout": {
+      "$ref": "#/definitions/Layout"
+    },
+    "visualizations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/VisInstance" }
+    },
+    "coordinations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Coordination"
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "output": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["name", "url", "output"]
+      }
+    },
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "reference of json schema for Nebula specifications"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "VisInstance": {
+      "type": "object",
+      "required": ["id", "container", "visualization"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "container": {
+          "type": "string",
+          "pattern": "^\\d+( \\d+){1,3}$",
+          "title": "Container of visualization instance",
+          "description": "grid position of the instance,\nfor detail: https://nebula-vis.github.io/docs/layout"
+        },
+        "visualization": {
+          "enum": [
+            "scatterplot",
+            "areachart",
+            "barchart",
+            "lineup",
+            "linechart",
+            "graph",
+            "select",
+            "tree",
+            "treemap",
+            "parallel",
+            "radial",
+            "button",
+            "input",
+            "slider",
+            "vegalite",
+            "piechart",
+            "donutchart",
+            "sectorchart",
+            "sunburstchart",
+            "map",
+            "heatmap2d"
+          ]
+        },
+        "props": {
+          "type": "object",
+          "properties": { "data": { "title": "Identifiter of data" } }
+        }
+      },
+      "$comment": "Add new item in oneOf below to specificate new visualization, define it's props' properties",
+      "oneOf": [
+        {
+          "properties": {
+            "visualization": { "const": "areachart" },
+            "props": { "$ref": "vis-props/areachart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "barchart" },
+            "props": { "$ref": "vis-props/barchart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "button" },
+            "props": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "the text displayed on the button"
+                },
+                "clicked": {
+                  "type": "boolean",
+                  "description": "whether the button is clicked just now",
+                  "default": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "visualization": { "const": "dangerous-html" },
+            "props": {
+              "type": "object",
+              "properties": {
+                "html": {
+                  "type": "string",
+                  "description": "create html with text, dangerous!",
+                  "default": "<div></div>"
+                }
+              }
+            }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "donutchart" },
+            "props": { "$ref": "vis-props/donutchart.json#" }
+          },
+          "required": ["props"]
+        },
+
+        {
+          "properties": {
+            "visualization": { "const": "heatmap2d" },
+            "props": { "$ref": "vis-props/heatmap2d.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "input" },
+            "props": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "description": "the value of the input",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "linechart" },
+            "props": { "$ref": "vis-props/linechart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "lineup" },
+            "props": { "$ref": "vis-props/lineup.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "map" },
+            "props": { "$ref": "vis-props/map.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "graph" },
+            "props": { "$ref": "vis-props/graph.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "parallel" },
+            "props": { "$ref": "vis-props/parallel.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "piechart" },
+            "props": { "$ref": "vis-props/piechart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "radial" },
+            "props": { "$ref": "vis-props/radial.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "scatterplot" },
+            "props": { "$ref": "vis-props/scatterplot.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "sectorchart" },
+            "props": { "$ref": "vis-props/sectorchart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "select" },
+            "props": {
+              "type": "object",
+              "properties": {
+                "options": {
+                  "type": "array",
+                  "items": "string",
+                  "description": "the options of the select",
+                  "default": []
+                },
+                "clicked": {
+                  "type": "string",
+                  "description": "the selected option"
+                }
+              }
+            }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "slider" },
+            "props": {
+              "type": "object",
+              "properties": {
+                "max": {
+                  "type": "number",
+                  "description": "the max value of the slider"
+                },
+                "min": {
+                  "type": "number",
+                  "description": "the min value of the slider",
+                  "default": 0
+                },
+                "value": {
+                  "type": "number",
+                  "description": "the value of the slider"
+                }
+              }
+            }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "sunburstchart" },
+            "props": { "$ref": "vis-props/sunburstchart.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "tree" },
+            "props": { "$ref": "vis-props/tree.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "treemap" },
+            "props": { "$ref": "vis-props/treemap.json#" }
+          },
+          "required": ["props"]
+        },
+        {
+          "properties": {
+            "visualization": { "const": "vega-lite" },
+            "props": {
+              "$ref": "https://vega.github.io/schema/vega-lite/v4.json"
+            }
+          },
+          "required": ["props"]
+        }
+      ]
+    },
+    "Data": {
+      "type": "object",
+      "title": "Inside or Remote hierarchy/table/graph data",
+      "description": "Priority: \"path\" > \"values\" > \"hierarchy\" > \"nodes\"&\"links\"",
+      "properties": {
+        "name": { "type": "string" },
+        "hierarchy": { "type": "object" },
+        "values": { "type": "array" },
+        "nodes": { "type": "array" },
+        "links": { "type": "array" },
+        "path": {
+          "type": "string",
+          "format": "uri-reference",
+          "title": "Path to get data",
+          "description": "url of relative path"
+        },
+        "format": {
+          "enum": ["csv", "json"],
+          "description": "Format of remote file, \"csv\" or \"json\" are currently supported"
+        }
+      },
+      "dependencies": {
+        "format": ["path"]
+      },
+      "allOf": [
+        { "not": { "required": ["name", "hierarchy", "values"] } },
+        { "not": { "required": ["name", "hierarchy", "nodes"] } },
+        { "not": { "required": ["name", "hierarchy", "path"] } },
+        { "not": { "required": ["name", "values", "path"] } },
+        { "not": { "required": ["name", "values", "nodes"] } },
+        { "not": { "required": ["name", "nodes", "path"] } },
+        {
+          "oneOf": [
+            { "required": ["name", "values"] },
+            { "required": ["name", "hierarchy"] },
+            { "required": ["name", "nodes", "links"] },
+            { "required": ["name", "path"] }
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "Layout": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^\\d+(fr|%|px)$"
+          },
+          "minItems": 1
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^\\d+(fr|%|px)$"
+          },
+          "minItems": 1
+        },
+        "width": {
+          "type": "string",
+          "pattern": "^\\d+(%|px|vw)$"
+        },
+        "height": {
+          "type": "string",
+          "pattern": "^\\d+(%|px|vw)$"
+        }
+      },
+      "required": ["width", "height", "rows", "columns"],
+      "additionalProperties": false
+    },
+    "Coordination": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^([a-z0-9 ,-_$]+)$",
+          "title": "Coordination Statement",
+          "description": "for detail: https://nebula-vis.github.io/docs/coordinations#high-level-grammar"
+        },
+        {
+          "type": "object",
+          "title": "Coordination Item",
+          "description": "for detail: https://nebula-vis.github.io/docs/coordinations#high-level-grammar",
+          "properties": {
+            "visualizations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          },
+          "patternProperties": {
+            "^(how|what|why)$": {
+              "type": "string",
+              "pattern": "^([a-z0-9 ,-_$]+)$"
+            }
+          },
+          "required": ["visualizations"]
+        }
+      ]
+    }
+  }
+}

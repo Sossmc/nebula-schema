@@ -1,0 +1,13 @@
+{
+  "title": "Props of sunburstchart",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string", "description": "reference of hierarchy data" },
+    "selection": {
+      "$ref": "../utils.json#/Hierarchy",
+      "description": "the selected hierarchy data"
+    }
+  },
+  "required": ["data"],
+  "additionalProperties": false
+}

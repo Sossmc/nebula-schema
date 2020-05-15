@@ -1,0 +1,39 @@
+{
+  "Color": {
+    "type": "string",
+    "pattern": "^([rR][gG][Bb][Aa]?[\\(]([\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),){2}[\\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),?[\\s]*(0\\.\\d{1,2}|1|0)?[\\)]{1}|#([0-9a-fA-F]{6}|[0-9a-fA-F]{3}))$"
+  },
+  "Table": {
+    "type": "array",
+    "format": "table",
+    "title": "Dataset",
+    "uniqueItems": true,
+    "items": {
+      "type": "object",
+      "title": "item",
+      "properties": {
+        "range": { "type": ["string", "number"] },
+        "value": { "type": ["string", "number"] }
+      }
+    },
+    "default": []
+  },
+  "Graph": {
+    "type": "array"
+  },
+  "Hierarchy": {
+    "type": "object",
+    "properties": {
+      "value": true,
+      "children": {
+        "type": "array",
+        "items": { "$ref": "#/Hierarchy" }
+      }
+    }
+  },
+  "Aggregation": {
+    "type": "string",
+    "enum": ["sum", "average", "max", "min"],
+    "description": "the aggregate method to deal data in each part."
+  }
+}

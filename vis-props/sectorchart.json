@@ -1,0 +1,15 @@
+{
+  "title": "Props of sectorchart",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "x": { "type": "string" },
+    "y": { "type": "string" },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    }
+  },
+  "required": ["data"],
+  "additionalProperties": false
+}

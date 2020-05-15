@@ -1,0 +1,28 @@
+{
+  "title": "Props of linechart",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "x": { "type": "string" },
+    "y": { "type": "string" },
+    "detail": {
+      "type": "string",
+      "description": "The data field encoded by the label channel"
+    },
+    "brushType": {
+      "type": "string",
+      "description": "The type of brush, select x, select y or select area."
+    },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    },
+    "selectedXRange": {
+      "type": "object",
+      "description": "the range of x that is selected.",
+      "default": {}
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data", "x"]
+}
