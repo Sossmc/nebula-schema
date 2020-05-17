@@ -3,28 +3,22 @@
   "type": "object",
   "properties": {
     "data": { "type": "string" },
-    "range": { "type": "string", "description": "the primary key of the data" },
-    "value": { "type": "string", "description": "the value key of the data" },
-    "aggregate": { "$ref": "../utils.json#/Aggregation" },
-    "count": {
-      "type": "number",
-      "multipleOf": 1,
-      "default": null
+    "color": {
+      "$ref": "../utils.json#/Color",
+      "description": "The attribute determining the color scheme of the bars."
     },
-    "colors": {
-      "type": "array",
-      "items": { "type": "string" },
-      "default": null
-    },
-    "innerRadius": {
-      "type": "number",
-      "maximum": 1,
-      "minimum": 0,
-      "default": 0
+    "theta": {
+      "type": "string",
+      "description": "The attribute determining the theta angle of each pie."
     },
     "selection": {
       "$ref": "../utils.json#/Table",
       "description": "the selected data items"
+    },
+    "topK": {
+      "type": "number",
+      "description": "The number determining how many bars are shown at the top of the ranking based on the x attribute.",
+      "default": 10
     }
   },
   "required": [

@@ -252,21 +252,7 @@
         {
           "properties": {
             "visualization": { "const": "select" },
-            "props": {
-              "type": "object",
-              "properties": {
-                "options": {
-                  "type": "array",
-                  "items": "string",
-                  "description": "the options of the select",
-                  "default": []
-                },
-                "clicked": {
-                  "type": "string",
-                  "description": "the selected option"
-                }
-              }
-            }
+            "props": { "$ref": "vis-props/select.json#" }
           },
           "required": ["props"]
         },

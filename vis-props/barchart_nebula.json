@@ -1,0 +1,44 @@
+{
+  "title": "Props of barchart",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "x": { "type": "string" },
+    "y": { "type": "string" },
+    "count": {
+      "type": "number",
+      "multipleOf": 1,
+      "default": 5,
+      "description": "the number of the bar"
+    },
+    "aggregate": { "$ref": "../utils.json#/Aggregation" },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    },
+    "selectedXRange": {
+      "type": "object",
+      "description": "the range of x that is selected.",
+      "default": {}
+    },
+    "xRange": {
+      "type": "array",
+      "description": "the range of x that displaying.",
+      "default": []
+    },
+    "bottomEdge": { "type": "string" },
+    "margin": {
+      "type": "object",
+      "properties": {
+        "left": { "type": "number" },
+        "right": { "type": "number" },
+        "top": { "type": "number" },
+        "bottom": { "type": "number" }
+      },
+      "description": "the margins around bars"
+    },
+    "isDisplay": { "type": "boolean", "description": "Axis display or not" }
+  },
+  "additionalProperties": false,
+  "required": ["data"]
+}

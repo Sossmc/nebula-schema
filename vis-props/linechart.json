@@ -5,22 +5,14 @@
     "data": { "type": "string" },
     "x": { "type": "string" },
     "y": { "type": "string" },
-    "detail": {
-      "type": "string",
-      "description": "The data field encoded by the label channel"
-    },
-    "brushType": {
-      "type": "string",
-      "description": "The type of brush, select x, select y or select area."
-    },
     "selection": {
       "$ref": "../utils.json#/Table",
       "description": "the selected data items"
     },
-    "selectedXRange": {
-      "type": "object",
-      "description": "the range of x that is selected.",
-      "default": {}
+    "topK": {
+      "type": "number",
+      "description": "The number determining how many bars are shown at the top of the ranking based on the x attribute.",
+      "default": 10
     }
   },
   "additionalProperties": false,

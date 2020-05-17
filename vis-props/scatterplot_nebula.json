@@ -5,13 +5,25 @@
     "data": { "type": "string" },
     "x": { "type": "string" },
     "y": { "type": "string" },
+    "scale": {
+      "type": "number",
+      "description": "the value ranges of the x attribute"
+    },
     "selection": {
       "$ref": "../utils.json#/Table",
       "description": "the selected data items"
     },
+    "size": {
+      "type": "number",
+      "description": "the size of the circle"
+    },
     "color": {
       "$ref": "../utils.json#/Color",
       "description": " the color of the circle"
+    },
+    "filteredData": {
+      "$ref": "../utils.json#/Table",
+      "description": "the filtered data items"
     }
   },
   "required": ["data"],

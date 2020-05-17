@@ -1,0 +1,17 @@
+{
+  "title": "Props of select",
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": "string",
+      "description": "the options",
+      "default": []
+    },
+    "value": {
+      "type": "string",
+      "description": "the selected option"
+    }
+  },
+  "additionalProperties": false
+}

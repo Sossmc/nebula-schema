@@ -1,0 +1,17 @@
+{
+  "title": "Props of Choropleth Map",
+  "type": "object",
+  "properties": {
+    "data": { "type": "string" },
+    "color": {
+      "$ref": "../utils.json#/Color",
+      "description": "The attribute determining the color scheme of the bars."
+    },
+    "selection": {
+      "$ref": "../utils.json#/Table",
+      "description": "the selected data items"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

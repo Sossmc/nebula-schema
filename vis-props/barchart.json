@@ -1,43 +1,29 @@
 {
-  "title": "Props of barchart",
+  "title": "Props of barchart(Vertical)",
   "type": "object",
   "properties": {
     "data": { "type": "string" },
-    "x": { "type": "string" },
-    "y": { "type": "string" },
-    "count": {
-      "type": "number",
-      "multipleOf": 1,
-      "default": 5,
-      "description": "the number of the bar"
+    "x": {
+      "type": "string",
+      "description": "The attribute determining the x2 position of each bar."
     },
-    "aggregate": { "$ref": "../utils.json#/Aggregation" },
+    "y": {
+      "type": "string",
+      "description": "The attribute determining the y position of each bar."
+    },
     "selection": {
       "$ref": "../utils.json#/Table",
       "description": "the selected data items"
     },
-    "selectedXRange": {
-      "type": "object",
-      "description": "the range of x that is selected.",
-      "default": {}
+    "color": {
+      "$ref": "../utils.json#/Color",
+      "description": "The attribute determining the color scheme of the bars."
     },
-    "xRange": {
-      "type": "array",
-      "description": "the range of x that displaying.",
-      "default": []
-    },
-    "bottomEdge": { "type": "string" },
-    "margin": {
-      "type": "object",
-      "properties": {
-        "left": { "type": "number" },
-        "right": { "type": "number" },
-        "top": { "type": "number" },
-        "bottom": { "type": "number" }
-      },
-      "description": "the margins around bars"
-    },
-    "isDisplay": { "type": "boolean", "description": "Axis display or not" }
+    "topK": {
+      "type": "number",
+      "description": "The number determining how many bars are shown at the top of the ranking based on the x attribute.",
+      "default": 10
+    }
   },
   "additionalProperties": false,
   "required": ["data"]
