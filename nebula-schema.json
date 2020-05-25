@@ -3,54 +3,11 @@
   "type": "object",
   "required": ["data", "visualizations", "layout"],
   "properties": {
-    "data": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Data"
-      }
-    },
-    "layout": {
-      "$ref": "#/definitions/Layout"
-    },
-    "visualizations": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/VisInstance" }
-    },
-    "coordinations": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Coordination"
-      }
-    },
-    "transformations": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri-reference"
-          },
-          "parameters": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "output": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1
-          }
-        },
-        "required": ["name", "url", "output"]
-      }
-    },
+    "data": { "type": "array", "items": { "$ref": "#/definitions/Data" } },
+    "layout": { "$ref": "#/definitions/Layout" },
+    "visualizations": { "type": "array", "items": { "$ref": "#/definitions/VisInstance" } },
+    "coordinations": { "type": "array", "items": { "$ref": "#/definitions/Coordination" } },
+    "transformations": { "type": "array", "items": { "$ref": "#/definitions/Transformation" } },
     "$schema": {
       "type": "string",
       "format": "uri-reference",
@@ -415,6 +372,32 @@
           "required": ["visualizations"]
         }
       ]
+    },
+    "Transformation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["name", "url", "output"]
     }
   }
 }
